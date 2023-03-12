@@ -1,22 +1,63 @@
-<h1>Configure your cookie</h1>
-
-<h2>Select cookie base</h2>
-
-{{> base-selector}}
-
-<h2>Select your favorite addons</h2>
-
-{{#each allAddons}}
-    <a href="/configurator/add-addon/{{this.[0]}}" class="btn {{#if (isInArray @root.cookie.addons this.[0])}}btn-disabled{{/if}}">Add {{this.[0]}} for {{this.[1]}} PLN</a>
-{{/each}}
-
-{{#if cookie.base}}
-    {{> cookie-preview}}
-    {{> addons}}
-    <a href="/order/summary" class="btn btn-big"><img src="/assets/images/shopping-cart.png" class="cart-img" alt=""> Order now!</a>
-{{else}}
-    <div class="error">
-        <p><strong>Please select base of your cookie to se it's preview and price summary.</strong></p>
-        <p>{{> base-selector}}</p>
+<div class="card text-center">
+    <div class="card-header">
+        <h1>Configure your cookie</h1>
     </div>
-{{/if}}
+    <div class="card-body">
+        <h2 class="card-title">Select cookie base</h2><br>
+        <div>
+            {{> base-selector}}
+        </div>
+    </div><br>
+    <div class="card-body">
+        <h2 class="card-title">Select your favorite addons</h2>
+    </div>
+    <div class="card-body">
+        {{#each allAddons}}
+        <a href="/configurator/add-addon/{{this.[0]}}"
+            class="btn {{#if (isInArray @root.cookie.addons this.[0])}}btn-disabled{{/if}} btn btn-warning"
+            role="button">Add {{this.[0]}} for
+            {{this.[1]}}
+            €</a>
+        {{/each}}
+    </div>
+</div>
+
+<div class="card text-center">
+    <div class="card-body">
+        {{#if cookie.base}}
+        {{> cookie-preview}}
+        {{> addons}}
+
+        <div class="d-grid gap-2">
+            <a href="/order/summary" class="btn btn-lg btn-success" role="button"><img
+                    src="/assets/images/shopping-cart.png" class="cart-img" alt="">Order now!</a>
+        </div>
+
+        {{else}}
+
+        <div class="card text-center">
+            <div class="card-body">
+
+                <p class="card-text">
+                <div class="alert alert-primary">
+                    <p>
+                        <strong>Please select base of your cookie to se it's preview and price
+                            summary.</strong>
+                    </p>
+
+                    <p>{{> base-selector}}</p>
+                </div>
+                <div>
+
+                </div>
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        {{/if}}
+    </div>
+</div>

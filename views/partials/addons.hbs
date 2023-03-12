@@ -1,14 +1,19 @@
-<h3>Selected parts of cookie</h3>
-<ul>
-    <li>Base: {{cookie.base}} - {{pricify (findPrice allBases cookie.base)}} PLN</li>
+<div class="card text-center">
+  <div class="card-header">
+    <h2>Selected parts of cookie</h2>
+  </div>
+  <div class="card-body">
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-secondary">Base: {{cookie.base}} - {{pricify (findPrice allBases cookie.base)}} €</li>
     {{#each cookie.addons}}
-        <li>
-            {{#unless ../noDeleteBtn}}
-                <a class="btn btn-small" href="/configurator/delete-addon/{{this}}">Delete</a>
-            {{/unless}}
-            Addon: {{this}} - {{pricify (findPrice @root.allAddons this)}} PLN</li>
+        <li class="list-group-item list-group-item-secondary">
+            Addon: {{this}} - {{pricify (findPrice @root.allAddons this)}} €  {{#unless ../noDeleteBtn}}
+                <a class="btn btn-outline-danger" href="/configurator/delete-addon/{{this}}" role="button">Delete</a>
+            {{/unless}}</li>
     {{/each}}
 </ul>
-<p>
-    <strong>Total of {{pricify sum}} PLN</strong>
-</p>
+  </div>
+  <div class="card-footer text-muted">
+   <strong>Total of {{pricify sum}} €</strong>
+  </div>
+</div>

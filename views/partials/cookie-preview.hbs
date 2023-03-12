@@ -1,3 +1,10 @@
-{{#with cookie}}
-    <div class="cookie-preview" style="background: {{#each addons}}url('/assets/images/{{this}}.png'), {{/each}} url('/assets/images/empty-{{base}}.png')"></div>
-{{/with}}
+<div class="card text-center">
+    <div class="card-body">
+        {{#with cookie}}
+        <div class="cookie-preview"
+            style="background: {{#each addons}}url('/assets/images/{{this}}.png'), {{/each}} url('/assets/images/empty-{{base}}.png')">
+        </div>
+
+        {{/with}}
+    </div>
+</div>
